@@ -1,8 +1,4 @@
-TAILSCALE_AUTH_KEY
-
-
-
-name:RDP
+name: RDP
 
 on:
   workflow_dispatch:
@@ -37,9 +33,9 @@ jobs:
         run: |
           Add-Type -AssemblyName System.Security
           $charSet = @{
-              Upper = [char[]](65..90) # A-Z
-              Lower = [char[]](97..122) # a-z
-              Number = [char[]](48..57) # 0-9
+              Upper   = [char[]](65..90)      # A-Z
+              Lower   = [char[]](97..122)     # a-z
+              Number  = [char[]](48..57)      # 0-9
               Special = ([char[]](33..47) + [char[]](58..64) +
                          [char[]](91..96) + [char[]](123..126)) # Special characters
           }
@@ -113,4 +109,5 @@ jobs:
           # Keep runner active indefinitely (or until manually cancelled)
           while ($true) {
               Write-Host "[$(Get-Date)] RDP Active - Use Ctrl+C in workflow to terminate"
-              Start-Sleep -Seconds 30  }
+              Start-Sleep -Seconds 300
+          }
